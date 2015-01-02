@@ -11,7 +11,7 @@ build_requires 'File::Temp'  => '0.20';
 build_requires 'Test::More'  => 0;
 
 requires 'Log::Any::Adapter' => 0;
-requires 'Log::Log4perl' => '1.00';
+requires 'Log::Log4perl' => '1.32';
 
 license 'perl';
 
