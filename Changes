@@ -2,24 +2,38 @@ Revision history for Log-Any-Adapter-Log4perl
 
 {{$NEXT}}
 
+    [Fixed]
+
+    - Fixed failing tests with Log::Any 1.00+ by using wrapper_register
+      rather than munging Log4perl's legacy caller-level global variable
+
+    [Changed]
+
+    - Removed unnecessary formatting function wrappers given switch to
+      using wrapper_register
+
+    [Prereqs]
+
+    - Requires Log::Log4perl 1.32 or later for bug-free wrapper_register
+
 0.06  Mar 11, 2010
 
-- Fix typo in t/00-load.t - RT 54627
+    - Fix typo in t/00-load.t - RT 54627
 
 0.05  Feb 13, 2010
 
-- Fix tests to work with trace level
+    - Fix tests to work with trace level
 
 0.04  Jan 26, 2010
 
-- Set $Log::Log4perl::caller_depth correctly so that %C,%F,%L patterns will work - reported by Chris Moewes-Bystrom
+    - Set $Log::Log4perl::caller_depth correctly so that %C,%F,%L patterns will work - reported by Chris Moewes-Bystrom
 
 0.03  Oct 27, 2009
 
-- Update docs for new Log::Any::Adapter API
-- Add dependency on Log::Any::Adapter instead of Log::Any
+    - Update docs for new Log::Any::Adapter API
+    - Add dependency on Log::Any::Adapter instead of Log::Any
 
 0.02  Jul 17, 2009
 
-- Initial version
+    - Initial version
 
