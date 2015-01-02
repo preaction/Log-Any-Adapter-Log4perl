@@ -43,7 +43,7 @@ foreach my $method ( Log::Any->logging_and_detection_methods() ) {
 
 __END__
 
-=pod
+=for Pod::Coverage init
 
 =head1 SYNOPSIS
 
