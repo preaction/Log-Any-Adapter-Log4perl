@@ -8,7 +8,7 @@ use Log::Log4perl 1.32; # bug-free wrapper_register available
 use Log::Any::Adapter::Util qw(make_method);
 use base qw(Log::Any::Adapter::Base);
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 # Ensure %F, %C, etc. skip Log::Any related packages
 Log::Log4perl->wrapper_register(__PACKAGE__);

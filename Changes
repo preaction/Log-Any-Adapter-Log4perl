@@ -2,6 +2,8 @@ Revision history for Log-Any-Adapter-Log4perl
 
 {{$NEXT}}
 
+0.07      2015-01-01 22:39:19-05:00 America/New_York
+
     [Fixed]
 
     - Fixed failing tests with Log::Any 1.00+ by using wrapper_register
