@@ -1,10 +1,11 @@
+use strict;
+use warnings;
+
 package Log::Any::Adapter::Log4perl;
 # ABSTRACT: Log::Any adapter for Log::Log4perl
 
 use Log::Log4perl 1.32; # bug-free wrapper_register available
 use Log::Any::Adapter::Util qw(make_method);
-use strict;
-use warnings;
 use base qw(Log::Any::Adapter::Base);
 
 our $VERSION = '0.06';
