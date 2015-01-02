@@ -1,4 +1,6 @@
 package Log::Any::Adapter::Log4perl;
+# ABSTRACT: Log::Any adapter for Log::Log4perl
+
 use Log::Log4perl 1.32; # bug-free wrapper_register available
 use Log::Any::Adapter::Util qw(make_method);
 use strict;
@@ -28,9 +30,6 @@ foreach my $method ( Log::Any->logging_and_detection_methods() ) {
         s/critical|alert|emergency/fatal/;
     }
 
-    # Delegate to log4perl logger, increasing caller_depth so that %F, %C,
-    # etc. are generated correctly
-    #
     make_method(
         $method,
         sub {
@@ -45,10 +44,6 @@ foreach my $method ( Log::Any->logging_and_detection_methods() ) {
 __END__
 
 =pod
-
-=head1 NAME
-
-Log::Any::Adapter::Log4perl
 
 =head1 SYNOPSIS
 
@@ -74,18 +69,9 @@ Log levels are translated from Log::Any to Log4perl as follows:
 
 =head1 SEE ALSO
 
-L<Log::Any|Log::Any>, L<Log::Any::Adapter|Log::Any::Adapter>,
-L<Log::Log4perl|Log::Log4perl>
-
-=head1 AUTHOR
-
-Jonathan Swartz
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright (C) 2007 Jonathan Swartz, all rights reserved.
-
-This program is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself.
+=for :list
+* L<Log::Any>
+* L<Log::Any::Adapter>
+* L<Log::Log4perl>
 
 =cut

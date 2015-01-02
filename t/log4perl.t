@@ -1,5 +1,5 @@
 #!perl
-use File::Temp qw(tempdir);
+use File::Temp 0.20 qw(tempdir);
 use Log::Any::Adapter;
 use Log::Any::Adapter::Util qw(read_file);
 use Log::Log4perl;
