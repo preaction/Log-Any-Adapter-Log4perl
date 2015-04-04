@@ -2,6 +2,8 @@ Revision history for Log-Any-Adapter-Log4perl
 
 {{$NEXT}}
 
+0.08      2015-04-04 14:06:26-04:00 America/New_York
+
     [Changed]
 
     - Bumped Log::Any::Adapter prereq to 1.03
