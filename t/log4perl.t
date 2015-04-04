@@ -47,7 +47,7 @@ foreach my $method (@methods) {
         $level = uc($level);
         like(
             $contents,
-            qr/main:.*log4perl.t:$log_line; category_$method; $level; logging with $method\n/,
+            qr/(main:.*log4perl.t:$log_line|Log::Any::Adapter::Core:.*Core.pm:\d+); category_$method; $level; logging with $method\n/,
             "found $method"
         );
     }
