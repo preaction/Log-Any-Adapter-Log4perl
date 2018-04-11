@@ -40,6 +40,16 @@ foreach my $method ( Log::Any->logging_and_detection_methods() ) {
     );
 }
 
+sub structured {
+    my ($adapter, $level, $category, @parts) = @_;
+    my $context = ref($parts[-1]) eq 'HASH'
+        ? pop @parts
+        : {};
+    my $mdc = Log::Log4perl::MDC->get_context;
+    local @{$mdc}{keys %{$context}} = values %{$context};
+    $adapter->$level(@parts);
+}
+
 1;
 
 __END__
