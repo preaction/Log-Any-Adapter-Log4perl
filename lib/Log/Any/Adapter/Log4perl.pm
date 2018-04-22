@@ -78,6 +78,12 @@ Log levels are translated from Log::Any to Log4perl as follows:
     alert -> fatal
     emergency -> fatal
 
+=head1 METHODS
+
+=head2 structured
+
+This adapter supports structured logging, introduced in Log-Any v1.700.
+
 =head1 SEE ALSO
 
 =for :list
