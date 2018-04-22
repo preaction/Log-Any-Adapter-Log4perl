@@ -56,6 +56,8 @@ __END__
 
 =for Pod::Coverage init
 
+=for Pod::Coverage structured
+
 =head1 SYNOPSIS
 
     use Log::Log4perl;
@@ -68,6 +70,8 @@ __END__
 This Log::Any adapter uses L<Log::Log4perl|Log::Log4perl> for logging. log4perl
 must be initialized before calling I<set>. There are no parameters.
 
+This adapter supports structured logging introduced in Log-Any v1.700.
+
 =head1 LOG LEVEL TRANSLATION
 
 Log levels are translated from Log::Any to Log4perl as follows:
@@ -77,12 +81,6 @@ Log levels are translated from Log::Any to Log4perl as follows:
     critical -> fatal
     alert -> fatal
     emergency -> fatal
-
-=head1 METHODS
-
-=head2 structured
-
-This adapter supports structured logging, introduced in Log-Any v1.700.
 
 =head1 SEE ALSO
 
