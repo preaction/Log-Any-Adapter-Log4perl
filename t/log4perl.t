@@ -16,6 +16,11 @@ log4perl.appender.Logfile          = Log::Log4perl::Appender::File
 log4perl.appender.Logfile.filename = $dir/test.log
 log4perl.appender.Logfile.layout   = Log::Log4perl::Layout::PatternLayout
 log4perl.appender.Logfile.layout.ConversionPattern = %C:%F:%L; %c; %p; %m %X{mdc_key}%n
+log4perl.category.PackageA      = DEBUG, A1
+log4perl.appender.A1          = Log::Log4perl::Appender::File
+log4perl.appender.A1.filename = $dir/test-category.log
+log4perl.appender.A1.layout   = Log::Log4perl::Layout::PatternLayout
+log4perl.appender.A1.layout.ConversionPattern = %C:%F:%L; %c; %p; %m %X{mdc_key}%n
 ";
 Log::Log4perl::init( \$conf );
 Log::Any::Adapter->set('Log::Log4perl');
@@ -27,7 +32,9 @@ my $test_count =
   scalar(@methods) +
   ($has_structured_logging ? scalar(@methods) : 0) +
   scalar( Log::Any->detection_methods ) +
-  scalar( Log::Any->detection_aliases );
+  scalar( Log::Any->detection_aliases ) +
+  1 # category log tests
+  ;
 plan tests => $test_count;
 
 my $next_line;
@@ -90,3 +97,10 @@ foreach my $method ( Log::Any->detection_methods, Log::Any->detection_aliases )
         ok( !$log->$method, "!$method" );
     }
 }
+
+$log = Log::Any->get_logger( category => 'PackageA' );
+$log->debug( 'Foo' );
+my $contents = read_file("$dir/test-category.log");
+like $contents, qr{main:.*log4perl\.t:\d+; PackageA; DEBUG; Foo \[undef\]},
+    'category is logged correctly';
+
