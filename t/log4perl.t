@@ -100,7 +100,7 @@ foreach my $method ( Log::Any->detection_methods, Log::Any->detection_aliases )
 
 $log = Log::Any->get_logger( category => 'PackageA' );
 $log->debug( 'Foo' );
-my $contents = read_file("$dir/test-category.log");
+$contents = read_file("$dir/test-category.log");
 like $contents, qr{main:.*log4perl\.t:\d+; PackageA; DEBUG; Foo \[undef\]},
     'category is logged correctly';
 
