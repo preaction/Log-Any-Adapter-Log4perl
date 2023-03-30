@@ -5,14 +5,14 @@ package Log::Any::Adapter::Log4perl;
 # ABSTRACT: Log::Any adapter for Log::Log4perl
 
 use Log::Log4perl 1.32; # bug-free wrapper_register available
-use Log::Any::Adapter::Util 1.03 qw(make_method);
 use base qw(Log::Any::Adapter::Base);
 
 our $VERSION = '0.10';
 
 # Ensure %F, %C, etc. skip Log::Any related packages
 Log::Log4perl->wrapper_register(__PACKAGE__);
-Log::Log4perl->wrapper_register("Log::Any::Proxy");
+Log::Log4perl->wrapper_register('Log::Any::Proxy');
+Log::Log4perl->wrapper_register('Log::Any::Adapter::Base');
 
 sub init {
     my ($self) = @_;
@@ -31,13 +31,7 @@ foreach my $method ( Log::Any->logging_and_detection_methods() ) {
         s/critical|alert|emergency/fatal/;
     }
 
-    make_method(
-        $method,
-        sub {
-            my $self = shift;
-            return $self->{logger}->$log4perl_method(@_);
-        }
-    );
+    __PACKAGE__->delegate_method_to_slot('logger', $method, $log4perl_method);
 }
 
 sub structured {
